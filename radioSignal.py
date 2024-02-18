@@ -53,8 +53,8 @@ class radioSignal:
         mean = np.mean(data)
         std = np.std(data)
         print(max(data))
-        # return (data - mean)/(10*std) ### WANT TO MAKE SIGNAL BETWEEN -1 ~ 1
-        return (data - mean)/(max(data) - mean) ### WANT TO MAKE SIGNAL BETWEEN -1 ~ 1
+        return (data - mean)/(10*std) ### WANT TO MAKE SIGNAL BETWEEN -1 ~ 1
+        # return (data - mean)/(max(data) - mean) ### WANT TO MAKE SIGNAL BETWEEN -1 ~ 1
 
     def plotTime(self, title = ""):
         """plot the signal in time domain"""
