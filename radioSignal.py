@@ -52,21 +52,18 @@ class radioSignal:
     def normalization(data):
         mean = np.mean(data)
         std = np.std(data)
-        print(max(data))
         return (data - mean)/(10*std) ### WANT TO MAKE SIGNAL BETWEEN -1 ~ 1
         # return (data - mean)/(max(data) - mean) ### WANT TO MAKE SIGNAL BETWEEN -1 ~ 1
 
     def plotTime(self, title = ""):
         """plot the signal in time domain"""
-        plt.figure()
         plt.plot(self.time, self.waveData)
         plt.xlim(self.time[0], self.num_frame/self.fs)
         if title != "":
             plt.savefig(title)
-        plt.show()
 
 
-    def plotFreq(self, title = "", f_thersold=0):
+    def plotFreq(self, f_thersold=0):
         """plot the signal in frequency domain"""
         fft_data = abs(fft(self.waveData))/self.fs
         # ceiling(the closest and bigger integer), return is float
@@ -80,9 +77,6 @@ class radioSignal:
             plt.xlim(-f_thersold, f_thersold)
         else:
             plt.xlim(-self.fs/2, self.fs/2)
-        if title != "":
-            plt.savefig(title)
-        plt.show()
 
     def __getitem__(self, index):
         return self.waveData[index]
@@ -104,4 +98,6 @@ class radioSignal:
 if __name__ == "__main__":
     b = radioSignal("D:/program_ding/hummingdata/10/lugo_挪威的森林.wav")
     b.plotTime()
+    plt.figure()
     b.plotFreq(1000)
+    plt.show()
