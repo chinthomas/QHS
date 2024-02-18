@@ -28,7 +28,6 @@ class onsetDetector:
 
     def __init__(self, wave_data) -> None:
         self.signal = wave_data
-        print(wave_data)
         self.onsetProbable = []
         self.onsetNew = []
 
