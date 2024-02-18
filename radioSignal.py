@@ -66,7 +66,7 @@ class radioSignal:
         plt.show()
 
 
-    def plotFreq(self, f_thersold=0):
+    def plotFreq(self, title = "", f_thersold=0):
         """plot the signal in frequency domain"""
         fft_data = abs(fft(self.waveData))/self.fs
         # ceiling(the closest and bigger integer), return is float
@@ -80,7 +80,8 @@ class radioSignal:
             plt.xlim(-f_thersold, f_thersold)
         else:
             plt.xlim(-self.fs/2, self.fs/2)
-        plt.savefig("plotFreq")
+        if title != "":
+            plt.savefig(title)
         plt.show()
 
     def __getitem__(self, index):
@@ -103,6 +104,4 @@ class radioSignal:
 if __name__ == "__main__":
     b = radioSignal("D:/program_ding/hummingdata/10/lugo_挪威的森林.wav")
     b.plotTime()
-    # b = radioSignal("D:/program_ding/hummingdata/10/lugo_朋友.wav")
-    # b.plotTime()
     b.plotFreq(1000)
