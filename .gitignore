@@ -1,3 +1,5 @@
 .QHS-env/
 __pycache__/
 .vscode/
+figure/
+db/
